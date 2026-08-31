@@ -110,7 +110,7 @@ select {
 .access-shell {
   position: relative;
   z-index: 1;
-  width: min(100% - 28px, 680px);
+  width: min(100% - 28px, 760px);
   margin: 0 auto;
   padding: 0;
 }
@@ -163,7 +163,7 @@ select {
   min-height: min(780px, calc(100dvh - 36px));
   overflow: hidden;
   display: grid;
-  align-items: end;
+  place-items: center;
   border-radius: 30px;
   background: #111;
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
@@ -210,14 +210,22 @@ select {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(8, 9, 11, 0.2) 0%, rgba(8, 9, 11, 0.24) 38%, rgba(8, 9, 11, 0.9) 100%),
-    linear-gradient(90deg, rgba(8, 9, 11, 0.62), rgba(8, 9, 11, 0.1));
+    radial-gradient(circle at 50% 52%, rgba(240, 21, 36, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(8, 9, 11, 0.34) 0%, rgba(8, 9, 11, 0.52) 46%, rgba(8, 9, 11, 0.88) 100%),
+    linear-gradient(90deg, rgba(8, 9, 11, 0.68), rgba(8, 9, 11, 0.22));
 }
 
 .access-hero-copy {
   position: relative;
   z-index: 2;
   padding: clamp(24px, 5vw, 46px);
+}
+
+.access-claim-only {
+  width: min(100%, 560px);
+  display: grid;
+  place-items: center;
+  text-align: center;
 }
 
 .access-tags {
@@ -448,10 +456,11 @@ select {
 }
 
 .claim-pulse-btn {
-  width: min(100%, 440px);
-  min-height: 76px;
-  margin: 4px 0 20px;
-  font-size: clamp(20px, 4.8vw, 30px);
+  width: min(100%, 520px);
+  min-height: 86px;
+  margin: 0;
+  padding: 0 30px;
+  font-size: clamp(22px, 4.4vw, 34px);
   text-transform: none;
   animation: claim-pulse 1.05s ease-in-out infinite;
   will-change: transform, box-shadow;
