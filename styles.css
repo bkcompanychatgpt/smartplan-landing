@@ -34,7 +34,7 @@ body.guide-ready {
 }
 
 body.prep-ready {
-  overflow: auto;
+  overflow: hidden;
   background: #08090b;
 }
 
@@ -60,12 +60,47 @@ select {
 }
 
 .access-prep {
-  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 18px 0;
+  overflow: hidden;
   color: #fff;
   background:
+    linear-gradient(120deg, rgba(8, 9, 11, 0.72), rgba(8, 9, 11, 0.94)),
     linear-gradient(135deg, rgba(240, 21, 36, 0.22), transparent 32%),
     radial-gradient(circle at 78% 18%, rgba(231, 185, 76, 0.16), transparent 28%),
     #08090b;
+}
+
+.access-prep::before,
+.access-prep::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+}
+
+.access-prep::before {
+  width: 52vw;
+  height: 52vw;
+  right: -18vw;
+  top: -24vw;
+  background:
+    repeating-linear-gradient(90deg, rgba(240, 21, 36, 0.22) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(0deg, rgba(231, 185, 76, 0.12) 0 2px, transparent 2px 22px);
+  transform: rotate(14deg);
+}
+
+.access-prep::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34vh;
+  background:
+    linear-gradient(90deg, transparent 0 8%, rgba(240, 21, 36, 0.18) 8% 14%, transparent 14% 28%, rgba(231, 185, 76, 0.12) 28% 34%, transparent 34% 100%),
+    linear-gradient(0deg, rgba(240, 21, 36, 0.18), transparent);
+  clip-path: polygon(0 38%, 18% 30%, 32% 52%, 48% 36%, 66% 55%, 82% 34%, 100% 45%, 100% 100%, 0 100%);
 }
 
 .access-prep[hidden] {
@@ -73,9 +108,11 @@ select {
 }
 
 .access-shell {
-  width: min(100% - 28px, 506px);
+  position: relative;
+  z-index: 1;
+  width: min(100% - 28px, 680px);
   margin: 0 auto;
-  padding: 18px 0 32px;
+  padding: 0;
 }
 
 .access-nav {
@@ -123,11 +160,42 @@ select {
 
 .access-hero-card {
   position: relative;
-  min-height: 596px;
+  min-height: min(780px, calc(100dvh - 36px));
   overflow: hidden;
-  border-radius: 28px;
+  display: grid;
+  align-items: end;
+  border-radius: 30px;
   background: #111;
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
+}
+
+.access-hero-card::before,
+.access-hero-card::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+.access-hero-card::before {
+  width: 96px;
+  height: 96px;
+  right: 34px;
+  top: 54px;
+  border-radius: 24px;
+  transform: rotate(12deg);
+}
+
+.access-hero-card::after {
+  width: 132px;
+  height: 78px;
+  left: 28px;
+  top: 118px;
+  border-radius: 18px;
+  transform: rotate(-8deg);
 }
 
 .access-hero-card img {
@@ -142,13 +210,14 @@ select {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, transparent 20%, rgba(8, 9, 11, 0.22) 48%, rgba(8, 9, 11, 0.94) 100%),
-    linear-gradient(90deg, rgba(8, 9, 11, 0.22), rgba(8, 9, 11, 0.06));
+    linear-gradient(180deg, rgba(8, 9, 11, 0.2) 0%, rgba(8, 9, 11, 0.24) 38%, rgba(8, 9, 11, 0.9) 100%),
+    linear-gradient(90deg, rgba(8, 9, 11, 0.62), rgba(8, 9, 11, 0.1));
 }
 
 .access-hero-copy {
-  position: absolute;
-  inset: auto 22px 24px;
+  position: relative;
+  z-index: 2;
+  padding: clamp(24px, 5vw, 46px);
 }
 
 .access-tags {
@@ -174,14 +243,14 @@ select {
 }
 
 .access-hero-copy h1 {
-  margin: 0 0 10px;
-  max-width: 430px;
-  font-size: clamp(34px, 8vw, 48px);
+  margin: 0 0 22px;
+  max-width: 560px;
+  font-size: clamp(42px, 8.4vw, 76px);
   line-height: 1.02;
   letter-spacing: 0;
 }
 
-.access-hero-copy p,
+.claim-kicker,
 .access-hero-copy strong {
   display: block;
   max-width: 400px;
@@ -189,6 +258,12 @@ select {
   color: rgba(255, 255, 255, 0.86);
   font-size: 17px;
   line-height: 1.55;
+}
+
+.claim-kicker {
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 850;
 }
 
 .access-queue {
@@ -370,6 +445,29 @@ select {
   cursor: pointer;
   font-size: 18px;
   font-weight: 950;
+}
+
+.claim-pulse-btn {
+  width: min(100%, 440px);
+  min-height: 76px;
+  margin: 4px 0 20px;
+  font-size: clamp(20px, 4.8vw, 30px);
+  text-transform: none;
+  animation: claim-pulse 1.05s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes claim-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 20px 44px rgba(240, 21, 36, 0.28), 0 0 0 0 rgba(240, 21, 36, 0.42);
+  }
+
+  50% {
+    transform: scale(1.075);
+    box-shadow: 0 30px 70px rgba(240, 21, 36, 0.44), 0 0 0 14px rgba(240, 21, 36, 0);
+  }
 }
 
 .access-footnote {

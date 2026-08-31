@@ -31,9 +31,9 @@ window.DEFAULT_LANDING_CMS = {
   accessPrep: {
     brand: "smartplan MY",
     status: "Sedang menyediakan akses",
-    title: "Akses mata permainan percuma sedang disediakan",
-    body: "Kekal di halaman ini sebentar sementara kami menyemak kelayakan dan menyediakan pautan tuntutan untuk pengguna Malaysia.",
-    waitText: "Anggaran masa menunggu: 0s",
+    title: "Tuntut mata percuma anda",
+    body: "Akses smartplan dibuka untuk Malaysia.",
+    waitText: "Anda akan disambungkan selepas klik.",
     queueTitle: "Ganjaran sedang menunggu",
     queueNote: "Akses anda hampir selesai",
     panelBadge: "• Akses MY",
@@ -49,7 +49,7 @@ window.DEFAULT_LANDING_CMS = {
     ],
     readyTitle: "Akses percuma telah dibuka",
     readyBody: "Buka halaman seterusnya apabila anda sudah bersedia.",
-    buttonText: "Teruskan akses percuma",
+    buttonText: "Tuntut mata percuma anda",
     footnote: "Akses sudah sedia. Sila teruskan di bawah.",
     faqEyebrow: "Soalan biasa",
     faq: [
@@ -59,8 +59,8 @@ window.DEFAULT_LANDING_CMS = {
   },
   matchGate: {
     buttonText: "Klik untuk padankan tawaran",
-    title: "Menyambung ke tawaran mata percuma",
-    detail: "Sambungan sedang dipulihkan sementara akses tuntutan disediakan. Sila tunggu...",
+    title: "Menyambung ke pautan Telegram",
+    detail: "Sila tunggu sementara akses tuntutan anda disediakan...",
     states: [
       ["Memeriksa isyarat rangkaian", "Laluan tuntutan anda sedang disambungkan dengan selamat. Sila kekal di halaman ini."],
       ["Memuatkan tawaran tersedia", "Kempen mata permainan percuma sedang dimuatkan untuk pengguna Malaysia."],

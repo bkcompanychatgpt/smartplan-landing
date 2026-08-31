@@ -1,12 +1,6 @@
 (function () {
   const cmsConfig = typeof window.getLandingCms === "function" ? window.getLandingCms() : {};
   const legacyConfig = window.LANDING_CONFIG || {};
-  const config = {
-    ...legacyConfig,
-    ...(cmsConfig.settings || {}),
-    destinationAfterMatch: cmsConfig.settings?.postMatchDestination || legacyConfig.destinationAfterMatch,
-    countdownSeconds: cmsConfig.settings?.countdownSeconds || legacyConfig.countdownSeconds
-  };
   const matchGate = document.querySelector("#match-gate");
   const accessPrep = document.querySelector("#access-prep");
   const continueToGuide = document.querySelector("#continue-to-guide");
@@ -18,14 +12,35 @@
   const matchDetail = document.querySelector("#match-detail");
   const leadForm = document.querySelector("#lead-form");
   const toast = document.querySelector("#toast");
-  const trackingConfig = cmsConfig.tracking || {};
-
-  const states = cmsConfig.matchGate?.states || [
+  const defaultStates = [
     ["Memeriksa isyarat rangkaian", "Laluan tuntutan anda sedang disambungkan dengan selamat. Sila kekal di halaman ini."],
     ["Memuatkan tawaran tersedia", "Kempen mata permainan percuma sedang dimuatkan untuk pengguna Malaysia."],
     ["Menyediakan sambungan", "Hampir selesai. Halaman tuntutan anda sedang disediakan di latar belakang."],
     ["Membuka halaman tuntutan", "Sambungan dipulihkan. Anda akan dihantar ke halaman smartplan sekarang."]
   ];
+
+  function getActiveCms() {
+    return window.LANDING_CMS || cmsConfig || {};
+  }
+
+  function getRuntimeConfig() {
+    const activeCms = getActiveCms();
+    return {
+      ...legacyConfig,
+      ...(activeCms.settings || {}),
+      destinationAfterMatch: activeCms.settings?.postMatchDestination || legacyConfig.destinationAfterMatch,
+      countdownSeconds: activeCms.settings?.countdownSeconds || legacyConfig.countdownSeconds
+    };
+  }
+
+  async function refreshServerCms() {
+    if (typeof window.loadLandingCms !== "function") return;
+    try {
+      window.LANDING_CMS = await window.loadLandingCms({ includeLocal: false });
+    } catch (error) {
+      console.warn("[cms-refresh-error]", error);
+    }
+  }
 
   const track = (eventName, payload = {}) => {
     const data = {
@@ -75,6 +90,7 @@
   }
 
   function sendServerEvent(eventName, data) {
+    const trackingConfig = getActiveCms().tracking || {};
     if (!trackingConfig.serverTrackingEndpoint) return;
     const eventId = `${eventName}.${Date.now()}.${Math.random().toString(36).slice(2)}`;
     const body = {
@@ -102,7 +118,7 @@
   }
 
   function showLanding() {
-    const destination = config.destinationAfterMatch || "#landing";
+    const destination = getRuntimeConfig().destinationAfterMatch || "#landing";
     if (destination !== "#landing") {
       track("MatchComplete", { destination });
       window.location.href = destination;
@@ -118,7 +134,9 @@
   }
 
   function startMatchingDelay() {
-    const total = Number(config.countdownSeconds || 10);
+    const activeCms = getActiveCms();
+    const states = activeCms.matchGate?.states || defaultStates;
+    const total = Number(getRuntimeConfig().countdownSeconds || 10);
 
     if (!startButton || !countdownStage || !matchRing || !matchStatus || !matchDetail) return;
 
@@ -126,8 +144,8 @@
     startButton.hidden = true;
     countdownStage.hidden = false;
     matchRing.removeAttribute("style");
-    matchStatus.textContent = cmsConfig.matchGate?.title || "Menyambung ke tawaran mata percuma";
-    matchDetail.textContent = cmsConfig.matchGate?.detail || "Sambungan sedang dipulihkan sementara akses tuntutan disediakan. Sila tunggu...";
+    matchStatus.textContent = activeCms.matchGate?.title || "Menyambung ke pautan Telegram";
+    matchDetail.textContent = activeCms.matchGate?.detail || "Sila tunggu sementara akses tuntutan anda disediakan...";
     track("StartMatch", { seconds: total });
 
     let stateIndex = 0;
@@ -156,7 +174,7 @@
 
   startButton?.addEventListener("click", startMatchingDelay);
 
-  continueToGuide?.addEventListener("click", () => {
+  continueToGuide?.addEventListener("click", async () => {
     if (accessPrep) accessPrep.hidden = true;
     if (matchGate) matchGate.hidden = false;
     document.body.classList.remove("prep-ready");
@@ -164,6 +182,8 @@
     window.requestAnimationFrame(() => window.scrollTo(0, 0));
     window.setTimeout(() => window.scrollTo(0, 0), 60);
     track("AccessPrepContinue", {});
+    await refreshServerCms();
+    startMatchingDelay();
   });
 
   leadForm?.addEventListener("submit", (event) => {

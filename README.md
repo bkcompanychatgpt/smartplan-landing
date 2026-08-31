@@ -4,11 +4,10 @@ Static landing page package for Malaysia free game points campaigns.
 
 ## Flow
 
-- Visitor opens `index.html` and sees the preparation/waiting page.
-- Visitor scrolls down, reads the cards, and clicks the red continue button.
-- Visitor goes directly to the click-to-match page.
-- Visitor clicks the match button and sees the connection/loading page.
-- After loading, the visitor is redirected to `app.html`, which serves the real landing page.
+- Visitor opens `index.html` and sees a decorated smartplan reward page.
+- Visitor clicks the animated Malay claim button.
+- The page immediately shows the connection/loading countdown.
+- After loading, the visitor is redirected to the URL configured in admin.
 
 ## Included
 

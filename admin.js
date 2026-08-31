@@ -177,7 +177,7 @@
         ${textField("settings.brandInitial", "Brand initial")}
         ${textField("settings.title", "SEO title")}
         ${textField("settings.description", "SEO description")}
-        ${textField("settings.postMatchDestination", "After-match redirect URL")}
+        ${textField("settings.postMatchDestination", "Telegram redirect URL after loading")}
         ${numberField("settings.countdownSeconds", "Loading duration seconds")}
         ${textField("settings.appStoreUrl", "App Store URL")}
         ${textField("settings.googlePlayUrl", "Google Play URL")}
