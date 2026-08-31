@@ -6,8 +6,7 @@ Static landing page package for Malaysia free game points campaigns.
 
 - Visitor opens `index.html` and sees the preparation/waiting page.
 - Visitor scrolls down, reads the cards, and clicks the red continue button.
-- The browser guide page explains opening the link in Safari, Chrome, or the main browser.
-- Visitor continues to the click-to-match page.
+- Visitor goes directly to the click-to-match page.
 - Visitor clicks the match button and sees the connection/loading page.
 - After loading, the visitor is redirected to `app.html`, which serves the real landing page.
 

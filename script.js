@@ -9,9 +9,7 @@
   };
   const matchGate = document.querySelector("#match-gate");
   const accessPrep = document.querySelector("#access-prep");
-  const browserGuide = document.querySelector("#browser-guide");
   const continueToGuide = document.querySelector("#continue-to-guide");
-  const continueToMatch = document.querySelector("#continue-to-match");
   const landing = document.querySelector("#landing");
   const startButton = document.querySelector("#start-match");
   const countdownStage = document.querySelector("#countdown-stage");
@@ -160,20 +158,12 @@
 
   continueToGuide?.addEventListener("click", () => {
     if (accessPrep) accessPrep.hidden = true;
-    if (browserGuide) browserGuide.hidden = false;
+    if (matchGate) matchGate.hidden = false;
     document.body.classList.remove("prep-ready");
-    document.body.classList.add("guide-ready");
     window.scrollTo(0, 0);
     window.requestAnimationFrame(() => window.scrollTo(0, 0));
     window.setTimeout(() => window.scrollTo(0, 0), 60);
     track("AccessPrepContinue", {});
-  });
-
-  continueToMatch?.addEventListener("click", () => {
-    if (browserGuide) browserGuide.hidden = true;
-    if (matchGate) matchGate.hidden = false;
-    document.body.classList.remove("guide-ready");
-    track("BrowserGuideContinue", {});
   });
 
   leadForm?.addEventListener("submit", (event) => {
