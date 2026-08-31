@@ -137,17 +137,16 @@ window.DEFAULT_LANDING_CMS = {
   ],
   proof: {
     eyebrow: "Direka untuk trafik iklan",
-    headline: "Aliran penuh dari klik pertama hingga halaman tuntutan.",
-    body: "smartplan mengekalkan logik lama: halaman menunggu, panduan pelayar, klik untuk padanan, loading, kemudian landing page sebenar.",
+    headline: "Aliran ringkas dari klik pertama hingga halaman tuntutan.",
+    body: "Pengguna melihat butang tuntutan, menunggu loading ringkas, kemudian terus dihantar ke pautan Telegram atau destinasi yang ditetapkan di admin.",
     bullets: ["UTM dibawa dalam event", "CTA click direkodkan", "StartMatch dan MatchComplete tersedia", "Lead submit tersedia"]
   },
   how: {
     eyebrow: "Cara kerja",
-    headline: "Tiga langkah ke halaman tuntutan.",
+    headline: "Dua langkah ke halaman tuntutan.",
     steps: [
-      ["01", "Buka akses", "Pengguna melihat halaman persediaan dan meneruskan apabila butang merah muncul."],
-      ["02", "Ikut panduan pelayar", "Pengguna diarahkan membuka pengalaman dalam pelayar yang lebih stabil."],
-      ["03", "Padankan dan tuntut", "Klik padanan, tunggu loading, kemudian masuk ke landing page atau pautan pelanggan."]
+      ["01", "Tuntut mata", "Pengguna klik butang merah untuk memulakan sambungan tuntutan."],
+      ["02", "Tunggu dan teruskan", "Selepas loading selesai, pengguna dihantar ke pautan Telegram atau destinasi pelanggan."]
     ]
   },
   conversion: {
@@ -180,7 +179,7 @@ window.DEFAULT_LANDING_CMS = {
     eyebrow: "Perlu diketahui",
     headline: "Soalan lazim",
     items: [
-      ["Bolehkah pautan selepas loading ditukar?", "Ya. Tetapkan After-match redirect URL di admin untuk membuka app.html, anchor, atau URL pelanggan."],
+      ["Bolehkah pautan selepas loading ditukar?", "Ya. Tetapkan Telegram redirect URL after loading di admin untuk membuka pautan Telegram atau URL pelanggan."],
       ["Adakah Pixel disokong?", "Ya. Meta/Facebook Pixel, TikTok Pixel, Google Tag, dan server endpoint tersedia."],
       ["Di mana letak program pelanggan?", "Gunakan vendor/customer-package.js atau folder vendor/client-package. Loader sedia memuatkan fail pelanggan."],
       ["Adakah halaman mobile dan desktop sama?", "Ya. Kandungan datang daripada konfigurasi yang sama, jadi perubahan admin digunakan pada kedua-dua versi."]

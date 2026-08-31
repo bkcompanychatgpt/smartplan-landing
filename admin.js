@@ -4,7 +4,7 @@
 
   const tabs = [
     ["settings", "Settings"],
-    ["browserGuide", "Browser Guide"],
+    ["accessPrep", "Claim Screen"],
     ["match", "Match Gate"],
     ["hero", "Hero"],
     ["stats", "Stats"],
@@ -184,6 +184,10 @@
         ${textField("settings.webAppUrl", "Web App URL")}
         ${textField("settings.apkUrl", "APK URL")}
       </div>`,
+      accessPrep: () => `<div class="grid">
+        ${textField("accessPrep.buttonText", "Claim button text")}
+        ${imageField("images.accessHero", "Claim screen background")}
+      </div>`,
       browserGuide: () => `<div class="grid">
         ${textField("browserGuide.eyebrow", "Eyebrow")}
         ${textarea("browserGuide.headline", "Headline")}
@@ -266,6 +270,7 @@
         ${textarea("tracking.customBodyScript", "Custom body script")}
       </div>`,
       images: () => `<div class="grid">
+        ${imageField("images.accessHero", "Claim screen background")}
         ${imageField("images.matchBackground", "Match page background")}
         ${imageField("images.heroBackground", "Landing hero background / reward visual")}
         ${imageField("images.heroPreview", "App preview image")}

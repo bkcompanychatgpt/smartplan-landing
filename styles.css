@@ -226,6 +226,7 @@ select {
   display: grid;
   place-items: center;
   text-align: center;
+  inset: auto;
 }
 
 .access-tags {
@@ -1911,7 +1912,7 @@ cite {
   }
 
   .access-hero-copy {
-    inset: auto 18px 20px;
+    inset: auto;
   }
 
   .access-hero-copy h1 {
