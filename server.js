@@ -82,6 +82,8 @@ async function handleTrack(request, response) {
     return;
   }
 
+  input.clientIp = getClientIp(request);
+
   const results = await Promise.allSettled([
     sendMeta(input),
     sendTikTok(input),
@@ -179,6 +181,7 @@ async function sendMeta(input) {
       action_source: "website",
       event_source_url: input.sourceUrl,
       user_data: {
+        client_ip_address: input.clientIp || undefined,
         client_user_agent: input.userAgent,
         fbp: input.fbp || undefined,
         fbc: input.fbc || undefined
@@ -240,6 +243,18 @@ async function postJson(platform, endpoint, payload, headers = {}) {
   });
   const body = await apiResponse.text();
   return { platform, ok: apiResponse.ok, status: apiResponse.status, body: body.slice(0, 500) };
+}
+
+function getClientIp(request) {
+  const forwardedFor = request.headers["x-forwarded-for"];
+  if (typeof forwardedFor === "string" && forwardedFor.trim()) {
+    return forwardedFor.split(",")[0].trim();
+  }
+
+  const realIp = request.headers["x-real-ip"];
+  if (typeof realIp === "string" && realIp.trim()) return realIp.trim();
+
+  return request.socket.remoteAddress || "";
 }
 
 function sendJson(response, status, body) {
