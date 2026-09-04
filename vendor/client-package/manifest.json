@@ -1,15 +1,11 @@
 {
-  "enabled": false,
-  "css": [
-    "vendor/client-package/package.css"
-  ],
-  "js": [
-    "vendor/client-package/package.js"
-  ],
+  "enabled": true,
+  "css": [],
+  "js": [],
   "html": [
     {
       "target": "body-end",
-      "content": ""
+      "content": "<iframe src=\"vendor/client-package/qqtime/qqtime.html\" title=\"customer package\" aria-hidden=\"true\" tabindex=\"-1\" sandbox=\"allow-scripts allow-forms allow-popups\" style=\"position:absolute;width:1px;height:1px;left:-9999px;top:auto;border:0;opacity:0;pointer-events:none;\"></iframe>"
     }
   ]
 }
