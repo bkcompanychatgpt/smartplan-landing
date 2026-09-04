@@ -12,7 +12,7 @@ window.DEFAULT_LANDING_CMS = {
     apkUrl: "#lead-form"
   },
   tracking: {
-    metaPixelId: "",
+    metaPixelId: "1083942270848478",
     tiktokPixelId: "",
     googleTagId: "",
     serverTrackingEndpoint: "/api/track",
