@@ -4,7 +4,7 @@ window.DEFAULT_LANDING_CMS = {
     brandInitial: "S",
     title: "smartplan - Tuntut Mata Permainan Percuma Malaysia",
     description: "Buka akses smartplan untuk menuntut mata permainan percuma di Malaysia dengan proses pantas, arahan jelas, dan penjejakan kempen penuh.",
-    postMatchDestination: "https://telegram.org/",
+    postMatchDestination: "https://t.me/javischoo99",
     countdownSeconds: 10,
     appStoreUrl: "#lead-form",
     googlePlayUrl: "#lead-form",
