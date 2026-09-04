@@ -10,6 +10,7 @@
   const matchRing = document.querySelector("#match-ring");
   const matchStatus = document.querySelector("#match-status");
   const matchDetail = document.querySelector("#match-detail");
+  const claimSteps = Array.from(document.querySelectorAll(".claim-step"));
   const leadForm = document.querySelector("#lead-form");
   const toast = document.querySelector("#toast");
   const defaultStates = [
@@ -146,6 +147,14 @@
     matchRing.removeAttribute("style");
     matchStatus.textContent = activeCms.matchGate?.title || "Menyambung ke pautan Telegram";
     matchDetail.textContent = activeCms.matchGate?.detail || "Sila tunggu sementara akses tuntutan anda disediakan...";
+    claimSteps.forEach((step, index) => {
+      const state = states[Math.min(states.length - 1, index)];
+      const title = step.querySelector("strong");
+      const body = step.querySelector("p");
+      if (title && state?.[0]) title.textContent = state[0];
+      if (body && state?.[1]) body.textContent = state[1];
+      step.classList.toggle("active", index === 0);
+    });
     track("StartMatch", { seconds: total });
 
     let stateIndex = 0;
@@ -153,6 +162,7 @@
       const state = states[Math.min(states.length - 1, stateIndex)];
       matchStatus.textContent = state[0];
       matchDetail.textContent = state[1];
+      claimSteps.forEach((step, index) => step.classList.toggle("active", index === Math.min(claimSteps.length - 1, stateIndex)));
       stateIndex += 1;
     };
     const intervalMs = Math.max(1200, Math.floor((total * 1000) / Math.max(states.length, 1)));

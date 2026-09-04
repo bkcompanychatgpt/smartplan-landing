@@ -59,13 +59,13 @@ window.DEFAULT_LANDING_CMS = {
   },
   matchGate: {
     buttonText: "Klik untuk padankan tawaran",
-    title: "Menyambung ke pautan Telegram",
-    detail: "Sila tunggu sementara akses tuntutan anda disediakan...",
+    title: "Cara tuntut mata percuma anda",
+    detail: "Ikut langkah ringkas ini selepas anda masuk ke Telegram.",
     states: [
-      ["Memeriksa isyarat rangkaian", "Laluan tuntutan anda sedang disambungkan dengan selamat. Sila kekal di halaman ini."],
-      ["Memuatkan tawaran tersedia", "Kempen mata permainan percuma sedang dimuatkan untuk pengguna Malaysia."],
-      ["Menyediakan sambungan", "Hampir selesai. Halaman tuntutan anda sedang disediakan di latar belakang."],
-      ["Membuka halaman tuntutan", "Sambungan dipulihkan. Anda akan dihantar ke halaman smartplan sekarang."]
+      ["Hubungi khidmat pelanggan di Telegram", "Klik pautan selepas loading dan mesej pasukan kami."],
+      ["Berikan nombor telefon anda", "Pastikan nombor aktif supaya akaun boleh disediakan."],
+      ["Beritahu permainan pilihan anda", "Nyatakan permainan yang anda mahu cuba dengan mata percuma."],
+      ["Akaun dan mata percuma disediakan", "Khidmat pelanggan akan buka akaun dan masukkan mata untuk anda bermain."]
     ]
   },
   browserGuide: {

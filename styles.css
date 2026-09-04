@@ -1001,7 +1001,7 @@ select {
 .countdown-stage {
   position: relative;
   z-index: 1;
-  width: min(92vw, 620px);
+  width: min(92vw, 820px);
   display: grid;
   justify-items: center;
   text-align: center;
@@ -1022,8 +1022,8 @@ select {
 
 .countdown-stage h1 {
   margin: 0 0 12px;
-  font-size: clamp(36px, 7vw, 76px);
-  line-height: 1;
+  font-size: clamp(30px, 5.6vw, 60px);
+  line-height: 1.05;
 }
 
 .countdown-stage p {
@@ -1032,6 +1032,63 @@ select {
   color: rgba(255, 255, 255, 0.74);
   font-size: clamp(17px, 3.8vw, 22px);
   line-height: 1.55;
+}
+
+.claim-steps {
+  width: min(100%, 760px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+  text-align: left;
+}
+
+.claim-step {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  align-items: start;
+  min-height: 118px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.claim-step.active {
+  transform: translateY(-3px);
+  border-color: rgba(240, 21, 36, 0.68);
+  background: linear-gradient(135deg, rgba(240, 21, 36, 0.28), rgba(255, 255, 255, 0.08));
+  box-shadow: 0 18px 44px rgba(240, 21, 36, 0.22);
+}
+
+.claim-step span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, #f01524, #860712);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.claim-step strong {
+  display: block;
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.claim-step p {
+  max-width: none;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .hero-content,
@@ -1953,6 +2010,78 @@ cite {
   .access-primary-btn {
     min-height: 60px;
     font-size: 17px;
+  }
+
+  .match-gate {
+    padding: 18px 12px;
+  }
+
+  .countdown-stage {
+    width: min(100%, 390px);
+  }
+
+  .countdown-stage::before {
+    inset: -18px 0;
+    border-radius: 22px;
+  }
+
+  .match-ring {
+    width: 116px;
+    height: 116px;
+    margin-bottom: 16px;
+    box-shadow:
+      inset 0 0 0 12px rgba(255, 255, 255, 0.08),
+      0 0 32px rgba(232, 93, 79, 0.24);
+  }
+
+  .signal-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .cache-bar {
+    bottom: 19px;
+    height: 5px;
+  }
+
+  .countdown-stage h1 {
+    margin-bottom: 8px;
+    font-size: 29px;
+  }
+
+  .countdown-stage > p {
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  .claim-steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .claim-step {
+    grid-template-columns: 36px 1fr;
+    min-height: 0;
+    gap: 10px;
+    padding: 11px;
+    border-radius: 14px;
+  }
+
+  .claim-step span {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+  }
+
+  .claim-step strong {
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  .claim-step p {
+    font-size: 12px;
+    line-height: 1.35;
   }
 
   .browser-guide {

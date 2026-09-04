@@ -196,10 +196,10 @@
         ${renderPairArray("browserGuide.steps", ["Number", "Instruction"])}
       </div>`,
       match: () => `<div class="grid">
-        ${textField("matchGate.buttonText", "Button text")}
-        ${textField("matchGate.title", "Loading title")}
-        ${textarea("matchGate.detail", "Loading message")}
-        ${renderPairArray("matchGate.states", ["Status title", "Status message"])}
+        ${textField("matchGate.buttonText", "Hidden match button text")}
+        ${textField("matchGate.title", "Claim guide intro title")}
+        ${textarea("matchGate.detail", "Claim guide intro message")}
+        ${renderPairArray("matchGate.states", ["Claim step title", "Claim step message"])}
       </div>`,
       hero: () => `<div class="grid">
         ${textField("hero.eyebrow", "Eyebrow")}
