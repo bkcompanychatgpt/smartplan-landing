@@ -4,7 +4,7 @@ window.DEFAULT_LANDING_CMS = {
     brandInitial: "S",
     title: "smartplan - Tuntut Mata Permainan Percuma Malaysia",
     description: "Buka akses smartplan untuk menuntut mata permainan percuma di Malaysia dengan proses pantas, arahan jelas, dan penjejakan kempen penuh.",
-    postMatchDestination: "app.html",
+    postMatchDestination: "#",
     countdownSeconds: 10,
     appStoreUrl: "#lead-form",
     googlePlayUrl: "#lead-form",
@@ -48,21 +48,22 @@ window.DEFAULT_LANDING_CMS = {
       ["3", "Tuntut melalui pautan rasmi", "Anda boleh teruskan ke halaman tawaran yang telah ditetapkan."]
     ],
     readyTitle: "Akses percuma telah dibuka",
-    readyBody: "Buka halaman seterusnya apabila anda sudah bersedia.",
+    readyBody: "Klik butang untuk mula memuatkan akses Telegram.",
     buttonText: "Tuntut mata percuma anda",
     footnote: "Akses sudah sedia. Sila teruskan di bawah.",
     faqEyebrow: "Soalan biasa",
     faq: [
-      ["Mengapa perlu buka halaman seterusnya?", "Sesetengah pelayar dalam aplikasi boleh menghalang pautan tuntutan, borang, dan penjejakan kempen."],
-      ["Adakah saya perlu memasang aplikasi?", "Tidak. Anda hanya perlu teruskan ke langkah seterusnya untuk membuka halaman dalam pelayar yang lebih stabil."]
+      ["Mengapa perlu tunggu loading?", "Loading ringkas digunakan untuk memaparkan arahan tuntutan sebelum butang Telegram dibuka."],
+      ["Adakah saya perlu memasang aplikasi?", "Tidak. Anda hanya perlu hubungi khidmat pelanggan melalui Telegram selepas butang dibuka."]
     ]
   },
   matchGate: {
     buttonText: "Klik untuk padankan tawaran",
+    completeButtonText: "Hubungi kami di Telegram",
     title: "Cara tuntut mata percuma anda",
     detail: "Ikut langkah ringkas ini selepas anda masuk ke Telegram.",
     states: [
-      ["Hubungi khidmat pelanggan di Telegram", "Klik pautan selepas loading dan mesej pasukan kami."],
+      ["Hubungi khidmat pelanggan di Telegram", "Klik butang Telegram selepas loading dan mesej pasukan kami."],
       ["Berikan nombor telefon anda", "Pastikan nombor aktif supaya akaun boleh disediakan."],
       ["Beritahu permainan pilihan anda", "Nyatakan permainan yang anda mahu cuba dengan mata percuma."],
       ["Akaun dan mata percuma disediakan", "Khidmat pelanggan akan buka akaun dan masukkan mata untuk anda bermain."]
@@ -127,7 +128,7 @@ window.DEFAULT_LANDING_CMS = {
   verified: {
     eyebrow: "Akses kempen",
     headline: "Semua bahagian penting boleh ditukar dari admin.",
-    body: "Tukar headline, butang, gambar, pautan selepas loading, Pixel ID, Google Tag, dan skrip pelanggan tanpa menulis semula halaman.",
+    body: "Tukar headline, butang, gambar, pautan Telegram selepas loading, Pixel ID, Google Tag, dan skrip pelanggan tanpa menulis semula halaman.",
     checks: ["Meta/Facebook Pixel", "TikTok Pixel", "Google Tag", "Vendor customer package"]
   },
   profiles: [
@@ -137,8 +138,8 @@ window.DEFAULT_LANDING_CMS = {
   ],
   proof: {
     eyebrow: "Direka untuk trafik iklan",
-    headline: "Aliran ringkas dari klik pertama hingga halaman tuntutan.",
-    body: "Pengguna melihat butang tuntutan, menunggu loading ringkas, kemudian terus dihantar ke pautan Telegram atau destinasi yang ditetapkan di admin.",
+    headline: "Aliran ringkas dari klik pertama hingga butang Telegram.",
+    body: "Pengguna melihat butang tuntutan, membaca arahan semasa loading, kemudian klik butang Telegram yang ditetapkan di admin.",
     bullets: ["UTM dibawa dalam event", "CTA click direkodkan", "StartMatch dan MatchComplete tersedia", "Lead submit tersedia"]
   },
   how: {
@@ -146,7 +147,7 @@ window.DEFAULT_LANDING_CMS = {
     headline: "Dua langkah ke halaman tuntutan.",
     steps: [
       ["01", "Tuntut mata", "Pengguna klik butang merah untuk memulakan sambungan tuntutan."],
-      ["02", "Tunggu dan teruskan", "Selepas loading selesai, pengguna dihantar ke pautan Telegram atau destinasi pelanggan."]
+      ["02", "Tunggu dan klik Telegram", "Selepas loading selesai, butang Telegram dibuka untuk pengguna menghubungi khidmat pelanggan."]
     ]
   },
   conversion: {
@@ -179,7 +180,7 @@ window.DEFAULT_LANDING_CMS = {
     eyebrow: "Perlu diketahui",
     headline: "Soalan lazim",
     items: [
-      ["Bolehkah pautan selepas loading ditukar?", "Ya. Tetapkan Telegram redirect URL after loading di admin untuk membuka pautan Telegram atau URL pelanggan."],
+      ["Bolehkah pautan Telegram ditukar?", "Ya. Tetapkan Telegram redirect URL after loading di admin untuk membuka pautan Telegram pelanggan."],
       ["Adakah Pixel disokong?", "Ya. Meta/Facebook Pixel, TikTok Pixel, Google Tag, dan server endpoint tersedia."],
       ["Di mana letak program pelanggan?", "Gunakan vendor/customer-package.js atau folder vendor/client-package. Loader sedia memuatkan fail pelanggan."],
       ["Adakah halaman mobile dan desktop sama?", "Ya. Kandungan datang daripada konfigurasi yang sama, jadi perubahan admin digunakan pada kedua-dua versi."]
@@ -187,7 +188,7 @@ window.DEFAULT_LANDING_CMS = {
   },
   finalCta: {
     headline: "Akses mata permainan percuma anda hanya satu klik lagi.",
-    body: "Teruskan melalui aliran smartplan dan buka halaman tuntutan yang telah disediakan untuk kempen Malaysia.",
+    body: "Teruskan melalui aliran smartplan dan hubungi khidmat pelanggan Telegram untuk tuntutan kempen Malaysia.",
     primaryText: "Tuntut sekarang",
     primaryUrl: "#lead-form",
     secondaryText: "Lihat tawaran",

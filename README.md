@@ -1,13 +1,14 @@
 # smartplan Landing Page
 
-Static landing page package for Malaysia free game points campaigns.
+Claim flow package for Malaysia free game points campaigns.
 
 ## Flow
 
 - Visitor opens `index.html` and sees a decorated smartplan reward page.
 - Visitor clicks the animated Malay claim button.
-- The page immediately shows the connection/loading countdown.
-- After loading, the visitor is redirected to the URL configured in admin.
+- The page immediately shows a 10-second claim guide/loading countdown.
+- After loading, the spinner becomes a Telegram button.
+- Visitor clicks the Telegram button and is sent to the URL configured in admin.
 
 ## Included
 
@@ -22,8 +23,8 @@ Static landing page package for Malaysia free game points campaigns.
 
 ## Key Files
 
-- `index.html`: preparation page, browser guide, click-to-match gate, and loading flow.
-- `landing.html`: final smartplan landing page, served as `app.html`.
+- `index.html`: claim button, loading guide, and Telegram button flow.
+- `landing.html`: legacy standalone page, not used in the current public flow.
 - `site-config.js`: default Malay content and editable CMS values.
 - `cms.js`: loads saved admin settings and renders the public pages.
 - `script.js`: routing, loading, form submit, UTM, and tracking events.
@@ -43,7 +44,6 @@ npm start
 Then open:
 
 - Public flow: `http://localhost:10000/`
-- Final landing page: `http://localhost:10000/app.html`
 - Admin dashboard: `http://localhost:10000/admin.html`
 
 Admin saves are written to `data/site-config.json` through `/api/config` when the server is running.

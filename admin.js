@@ -197,6 +197,7 @@
       </div>`,
       match: () => `<div class="grid">
         ${textField("matchGate.buttonText", "Hidden match button text")}
+        ${textField("matchGate.completeButtonText", "Telegram button text after loading")}
         ${textField("matchGate.title", "Claim guide intro title")}
         ${textarea("matchGate.detail", "Claim guide intro message")}
         ${renderPairArray("matchGate.states", ["Claim step title", "Claim step message"])}

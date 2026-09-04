@@ -8,16 +8,17 @@
   const startButton = document.querySelector("#start-match");
   const countdownStage = document.querySelector("#countdown-stage");
   const matchRing = document.querySelector("#match-ring");
+  const telegramClaimBtn = document.querySelector("#telegram-claim-btn");
   const matchStatus = document.querySelector("#match-status");
   const matchDetail = document.querySelector("#match-detail");
   const claimSteps = Array.from(document.querySelectorAll(".claim-step"));
   const leadForm = document.querySelector("#lead-form");
   const toast = document.querySelector("#toast");
   const defaultStates = [
-    ["Memeriksa isyarat rangkaian", "Laluan tuntutan anda sedang disambungkan dengan selamat. Sila kekal di halaman ini."],
-    ["Memuatkan tawaran tersedia", "Kempen mata permainan percuma sedang dimuatkan untuk pengguna Malaysia."],
-    ["Menyediakan sambungan", "Hampir selesai. Halaman tuntutan anda sedang disediakan di latar belakang."],
-    ["Membuka halaman tuntutan", "Sambungan dipulihkan. Anda akan dihantar ke halaman smartplan sekarang."]
+    ["Hubungi khidmat pelanggan di Telegram", "Klik butang Telegram selepas loading dan mesej pasukan kami."],
+    ["Berikan nombor telefon anda", "Pastikan nombor aktif supaya akaun boleh disediakan."],
+    ["Beritahu permainan pilihan anda", "Nyatakan permainan yang anda mahu cuba dengan mata percuma."],
+    ["Akaun dan mata percuma disediakan", "Khidmat pelanggan akan buka akaun dan masukkan mata untuk anda bermain."]
   ];
 
   function getActiveCms() {
@@ -118,20 +119,27 @@
     }).catch((error) => console.warn("[server-track-error]", error));
   }
 
-  function showLanding() {
-    const destination = getRuntimeConfig().destinationAfterMatch || "#landing";
-    if (destination !== "#landing") {
-      track("MatchComplete", { destination });
-      window.location.href = destination;
-      return;
-    }
+  function openTelegramDestination() {
+    const destination = getRuntimeConfig().destinationAfterMatch || "#";
+    track("TelegramClaimClick", { destination });
+    if (destination && destination !== "#") window.location.href = destination;
+  }
 
-    document.body.classList.add("landing-ready");
-    if (matchGate) matchGate.hidden = true;
-    if (landing) landing.hidden = false;
-    track("MatchComplete", { destination });
-    window.history.replaceState(null, "", window.location.pathname + window.location.search);
-    window.scrollTo(0, 0);
+  function completeMatchingDelay() {
+    const activeCms = getActiveCms();
+    const destination = getRuntimeConfig().destinationAfterMatch || "#";
+    const states = activeCms.matchGate?.states || defaultStates;
+    const finalState = states[Math.max(0, states.length - 1)];
+
+    if (matchRing) matchRing.hidden = true;
+    if (telegramClaimBtn) {
+      telegramClaimBtn.hidden = false;
+      telegramClaimBtn.textContent = activeCms.matchGate?.completeButtonText || "Hubungi kami di Telegram";
+    }
+    if (matchStatus && finalState?.[0]) matchStatus.textContent = finalState[0];
+    if (matchDetail && finalState?.[1]) matchDetail.textContent = finalState[1];
+    claimSteps.forEach((step, index) => step.classList.toggle("active", index === claimSteps.length - 1));
+    track("MatchComplete", { destination, readyForTelegram: true });
   }
 
   function startMatchingDelay() {
@@ -145,6 +153,8 @@
     startButton.hidden = true;
     countdownStage.hidden = false;
     matchRing.removeAttribute("style");
+    matchRing.hidden = false;
+    if (telegramClaimBtn) telegramClaimBtn.hidden = true;
     matchStatus.textContent = activeCms.matchGate?.title || "Menyambung ke pautan Telegram";
     matchDetail.textContent = activeCms.matchGate?.detail || "Sila tunggu sementara akses tuntutan anda disediakan...";
     claimSteps.forEach((step, index) => {
@@ -171,7 +181,7 @@
     const stateTimer = window.setInterval(updateState, intervalMs);
     window.setTimeout(() => {
       window.clearInterval(stateTimer);
-      showLanding();
+      completeMatchingDelay();
     }, total * 1000);
   }
 
@@ -183,6 +193,7 @@
   });
 
   startButton?.addEventListener("click", startMatchingDelay);
+  telegramClaimBtn?.addEventListener("click", openTelegramDestination);
 
   continueToGuide?.addEventListener("click", async () => {
     if (accessPrep) accessPrep.hidden = true;

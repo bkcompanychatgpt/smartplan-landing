@@ -994,6 +994,7 @@ select {
 }
 
 .match-start-btn[hidden],
+.telegram-claim-btn[hidden],
 .countdown-stage[hidden] {
   display: none;
 }
@@ -1089,6 +1090,22 @@ select {
   color: rgba(255, 255, 255, 0.72);
   font-size: 13px;
   line-height: 1.45;
+}
+
+.telegram-claim-btn {
+  width: min(100%, 360px);
+  min-height: 76px;
+  margin: 0 auto 28px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #f01524, #960914);
+  box-shadow: 0 24px 58px rgba(240, 21, 36, 0.38), 0 0 0 10px rgba(240, 21, 36, 0.08);
+  cursor: pointer;
+  font-size: clamp(20px, 4.6vw, 30px);
+  font-weight: 950;
+  animation: claim-pulse 1.15s ease-in-out infinite;
 }
 
 .hero-content,
