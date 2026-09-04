@@ -4,7 +4,7 @@ window.DEFAULT_LANDING_CMS = {
     brandInitial: "S",
     title: "smartplan - Tuntut Mata Permainan Percuma Malaysia",
     description: "Buka akses smartplan untuk menuntut mata permainan percuma di Malaysia dengan proses pantas, arahan jelas, dan penjejakan kempen penuh.",
-    postMatchDestination: "#",
+    postMatchDestination: "https://telegram.org/",
     countdownSeconds: 10,
     appStoreUrl: "#lead-form",
     googlePlayUrl: "#lead-form",
@@ -49,7 +49,7 @@ window.DEFAULT_LANDING_CMS = {
     ],
     readyTitle: "Akses percuma telah dibuka",
     readyBody: "Klik butang untuk mula memuatkan akses Telegram.",
-    buttonText: "Tuntut mata percuma anda",
+    buttonText: "CLAIM FREE KREDIT ANDA",
     footnote: "Akses sudah sedia. Sila teruskan di bawah.",
     faqEyebrow: "Soalan biasa",
     faq: [

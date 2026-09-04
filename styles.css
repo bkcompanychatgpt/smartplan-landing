@@ -174,27 +174,32 @@ select {
   content: "";
   position: absolute;
   z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .access-hero-card::before {
-  width: 96px;
-  height: 96px;
-  right: 34px;
-  top: 54px;
-  border-radius: 24px;
+  width: 112px;
+  height: 112px;
+  right: 30px;
+  top: 48px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 34%, rgba(255, 255, 255, 0.55), transparent 10%),
+    radial-gradient(circle at center, rgba(255, 205, 86, 0.95) 0 26%, rgba(146, 84, 16, 0.92) 27% 45%, rgba(240, 21, 36, 0.62) 46% 100%);
   transform: rotate(12deg);
 }
 
 .access-hero-card::after {
-  width: 132px;
-  height: 78px;
-  left: 28px;
-  top: 118px;
+  width: 150px;
+  height: 92px;
+  left: 26px;
+  top: 112px;
   border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 30%),
+    linear-gradient(135deg, rgba(240, 21, 36, 0.86), rgba(38, 5, 9, 0.9));
   transform: rotate(-8deg);
 }
 
@@ -924,9 +929,10 @@ select {
   position: relative;
   min-height: 100vh;
   display: grid;
-  place-items: center;
+  place-items: start center;
   padding: 24px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   isolation: isolate;
   background:
     linear-gradient(135deg, rgba(21, 19, 17, 0.48), rgba(21, 19, 17, 0.88)),
@@ -994,6 +1000,7 @@ select {
 }
 
 .match-start-btn[hidden],
+.match-ring[hidden],
 .telegram-claim-btn[hidden],
 .countdown-stage[hidden] {
   display: none;
@@ -1003,6 +1010,7 @@ select {
   position: relative;
   z-index: 1;
   width: min(92vw, 820px);
+  margin: min(9vh, 72px) auto 32px;
   display: grid;
   justify-items: center;
   text-align: center;
